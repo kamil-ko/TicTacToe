@@ -1,4 +1,4 @@
-package pl.k.kamil.java.TicTacToe.Utils;
+package pl.k.kamil.java.TicTacToe;
 
 
 public class Main {
