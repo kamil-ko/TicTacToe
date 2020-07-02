@@ -1,5 +1,8 @@
 package pl.k.kamil.java.TicTacToe;
 
+import static pl.k.kamil.java.TicTacToe.Board.getPlayer;
+import static pl.k.kamil.java.TicTacToe.PrintUtils.printBoard;
+
 
 public class Main {
 
@@ -7,47 +10,32 @@ public class Main {
 
 
         //definicja tablicy
-        int size = ScannerUtils.getFromScanner("Podaj rozmiar planszy");
-        char[][] board = new char[size][size];
-        //wypełnienie tablicy
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                board[i][j] = ' ';
-            }
-        }
+        Board board = new Board(ScannerUtils.getFromScanner("Podaj rozmiar planszy"));
 
         //wybór znaku
-        char player;
-        if (ScannerUtils.getFromScanner("Wybierz czym chcesz grać 1:kółko , 2:krzyżyk ") == 1) {
-            player = 'O';
-        } else {
-            player = 'X';
-        }
-
-
+        char player = getPlayer();
 
         // Gra
-
         boolean win = false;
         int movesCounter = 0;
-        while (movesCounter< board.length * board.length && !win){
-            PrintUtils.printBoard(board);
-            if(Move.moveLogic(board,player)) {
+        while (movesCounter < board.getBoard().length * board.getBoard().length && !win) {
+            printBoard(board.getBoard());
+            if (Move.moveLogic(board.getBoard(), player)) {
                 movesCounter++;
-                win = CheckWinner.checkWinner(board,player);
+                win = CheckWinner.checkWinner(board.getBoard(), player);
                 player = player == 'O' ? 'X' : 'O';
-            }
-            else {
+            } else {
                 System.out.println("Ruch nie poprawny sprbuj jeszcze raz: ");
             }
 
         }
-        PrintUtils.printBoard(board);
+        printBoard(board.getBoard());
         System.out.println("Koniec gry");
 
     }
 
 
 }
+
 
 

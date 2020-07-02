@@ -1,16 +1,17 @@
 package pl.k.kamil.java.TicTacToe;
 
+
 public class Move {
 
-    public static boolean moveLogic(char[][] board, char player) {
-      int row = getRow(board,player);
-      int column = getColumn(board,player);
 
-        if (board[row-1][column-1] == ' ') {
-        board[row-1][column-1] = player;
-        return true;
-        }
-        else {
+    public static boolean moveLogic(char[][] board, char player) {
+        int row = getRow(board, player);
+        int column = getColumn(board, player);
+
+        if (board[row - 1][column - 1] == ' ') {
+            board[row - 1][column - 1] = player;
+            return true;
+        } else {
             return false;
         }
 
@@ -43,12 +44,6 @@ public class Move {
             }
         }
     }
-
-
-
-
-
-
 
 
 }
